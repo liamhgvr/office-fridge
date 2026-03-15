@@ -38,6 +38,19 @@ border-radius:10px;
 cursor:pointer
 }
 
+body{
+text-align:center;
+}
+
+.options{
+align-items:center;
+}
+
+.opt-btn{
+text-align:center;
+justify-content:center;
+}
+
 .send-btn:disabled{opacity:0.4}
 </style>
 </head>
@@ -102,21 +115,21 @@ const DATA={
 en:{
 title:"Office Supply Tracker",
 sub:"Select status and send a report",
-milkQ:"How much milk is there?",
-iceQ:"How many ice bags are there?",
-name:"Your name (optional)",
+milkQ:"🥛 How much milk is there?",
+iceQ:"🧊 How many ice bags are there?",
+name:"👤 Your name (optional)",
 send:"Send WhatsApp Report",
 milk:[
-"2 full bottles ✨ perfect",
-"1 full + 1 open bottle",
-"1 open bottle only"
+"🥛🥛 2 full bottles ✨ perfect",
+"🥛 1 full + 1 open bottle",
+"🥛 1 open bottle only"
 ],
 ice:[
-"1 open + 4 sealed bags ✨ perfect",
-"1 open + 3 sealed bags",
-"1 open + 2 sealed bags",
-"1 open + 1 sealed bag",
-"1 open bag only"
+"🧊🧊🧊🧊 1 open + 4 sealed bags ✨ perfect",
+"🧊🧊🧊 1 open + 3 sealed bags",
+"🧊🧊 1 open + 2 sealed bags",
+"🧊 1 open + 1 sealed bag",
+"🧊 1 open bag only"
 ]
 },
 
@@ -210,6 +223,13 @@ if(sel.ice!==null)lines.push("🧊 "+DATA[lang].ice[sel.ice])
 const reporter=document.getElementById("reporter-name").value
 
 const msg=`Kitchen status:
+יותם יא מלך, מה שלומך? 👑
+
+הגעתי למשרד והמצב במטבח הוא כזה:
+${detailLines.join('\n')}
+
+תוכל בבקשה לקנות עוד למשרד?
+תודה רבה ויום טוב 🙏
 
 ${lines.join("\n")}
 
