@@ -7,144 +7,38 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f3;padding:1rem}
+.app{max-width:480px;margin:auto}
 
-body{
-font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-background:#f5f5f3;
-min-height:100vh;
-padding:1rem
-}
+.lang-bar{display:flex;gap:8px;justify-content:center;margin-bottom:20px}
+.lang-btn{padding:6px 16px;border-radius:20px;border:1px solid #ccc;background:#fff;cursor:pointer}
+.lang-btn.active{background:#111;color:#fff}
 
-.app{
-max-width:480px;
-margin:0 auto;
-padding:1.5rem 1rem
-}
+.card{background:#fff;border-radius:10px;padding:16px;margin-bottom:16px;border:1px solid #ddd}
 
-.lang-bar{
-display:flex;
-gap:8px;
-margin-bottom:1.5rem;
-justify-content:center
-}
-
-.lang-btn{
-padding:6px 18px;
-border-radius:20px;
-border:1.5px solid #ccc;
-background:transparent;
-color:#666;
-cursor:pointer;
-font-size:14px
-}
-
-.lang-btn.active{
-background:#111;
-color:#fff;
-border-color:#111
-}
-
-.header{
-text-align:center;
-margin-bottom:2rem
-}
-
-.header h1{
-font-size:22px;
-margin-bottom:4px
-}
-
-.header p{
-font-size:14px;
-color:#666
-}
-
-.cards{
-display:flex;
-flex-direction:column;
-gap:16px;
-margin-bottom:2rem
-}
-
-.card{
-background:#fff;
-border:0.5px solid #ddd;
-border-radius:12px;
-padding:1.25rem
-}
-
-.card-top{
-display:flex;
-align-items:center;
-gap:14px;
-margin-bottom:1rem
-}
-
-.icon{
-font-size:24px;
-width:44px;
-height:44px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:8px
-}
-
-.icon-milk{background:#E6F1FB}
-.icon-ice{background:#EAF3DE}
-
-.options{
-display:flex;
-flex-direction:column;
-gap:8px
-}
+.options{display:flex;flex-direction:column;gap:8px;margin-top:10px}
 
 .opt-btn{
-width:100%;
-padding:11px 14px;
+padding:10px;
 border-radius:8px;
-border:1.5px solid #ddd;
-background:transparent;
+border:1px solid #ddd;
 cursor:pointer;
-display:flex;
-align-items:center;
-gap:10px
+background:#fff
 }
 
-.opt-btn.sel{
-border-color:#1D9E75;
-background:#E1F5EE
-}
+.opt-btn.sel{background:#E1F5EE;border-color:#1D9E75}
 
 .send-btn{
 width:100%;
 padding:14px;
-border-radius:12px;
-border:none;
 background:#111;
 color:#fff;
-font-size:16px;
+border:none;
+border-radius:10px;
 cursor:pointer
 }
 
-.send-btn:disabled{
-opacity:0.4
-}
-
-.reporter-row input{
-width:100%;
-padding:9px 12px;
-border-radius:8px;
-border:0.5px solid #ddd;
-background:#f9f9f9
-}
-
-.note{
-font-size:12px;
-color:#aaa;
-text-align:center;
-margin-top:1rem
-}
+.send-btn:disabled{opacity:0.4}
 </style>
 </head>
 
@@ -158,119 +52,151 @@ margin-top:1rem
 <button class="lang-btn" onclick="setLang('th')">ไทย</button>
 </div>
 
-<div class="header">
-<h1 id="title"></h1>
+<h2 id="title"></h2>
 <p id="subtitle"></p>
-</div>
-
-<div class="cards">
 
 <div class="card">
-<div class="card-top">
-<div class="icon icon-milk">🥛</div>
+
 <div id="milk-question"></div>
-</div>
 
 <div class="options">
-<button class="opt-btn" onclick="pick('milk',0)">2 full bottles</button>
-<button class="opt-btn" onclick="pick('milk',1)">1 full + 1 open bottle</button>
-<button class="opt-btn" onclick="pick('milk',2)">1 open bottle only</button>
+<button class="opt-btn milk-opt" onclick="pick(event,'milk',0)"></button>
+<button class="opt-btn milk-opt" onclick="pick(event,'milk',1)"></button>
+<button class="opt-btn milk-opt" onclick="pick(event,'milk',2)"></button>
 </div>
+
 </div>
 
 <div class="card">
-<div class="card-top">
-<div class="icon icon-ice">🧊</div>
+
 <div id="ice-question"></div>
-</div>
 
 <div class="options">
-<button class="opt-btn" onclick="pick('ice',0)">1 open + 4 sealed bags</button>
-<button class="opt-btn" onclick="pick('ice',1)">1 open + 3 sealed bags</button>
-<button class="opt-btn" onclick="pick('ice',2)">1 open + 2 sealed bags</button>
-<button class="opt-btn" onclick="pick('ice',3)">1 open + 1 sealed bag</button>
-<button class="opt-btn" onclick="pick('ice',4)">1 open bag only</button>
-</div>
+<button class="opt-btn ice-opt" onclick="pick(event,'ice',0)"></button>
+<button class="opt-btn ice-opt" onclick="pick(event,'ice',1)"></button>
+<button class="opt-btn ice-opt" onclick="pick(event,'ice',2)"></button>
+<button class="opt-btn ice-opt" onclick="pick(event,'ice',3)"></button>
+<button class="opt-btn ice-opt" onclick="pick(event,'ice',4)"></button>
 </div>
 
-<div class="card reporter-row">
+</div>
+
+<div class="card">
 <div id="name-label"></div>
 <input type="text" id="reporter-name">
-</div>
-
 </div>
 
 <button class="send-btn" id="send-btn" onclick="sendReport()" disabled>
 <span id="send-label"></span>
 </button>
 
-<p class="note">Report sent via WhatsApp</p>
-
 </div>
 
 <script>
 
-let sel={milk:null,ice:null}
 let lang="en"
+let sel={milk:null,ice:null}
 
-const LANGS={
+const DATA={
+
 en:{
 title:"Office Supply Tracker",
 sub:"Select status and send a report",
-milk:"How much milk is there?",
-ice:"How many ice bags are there?",
+milkQ:"How much milk is there?",
+iceQ:"How many ice bags are there?",
 name:"Your name (optional)",
-send:"Send WhatsApp Report"
+send:"Send WhatsApp Report",
+milk:[
+"2 full bottles ✨ perfect",
+"1 full + 1 open bottle",
+"1 open bottle only"
+],
+ice:[
+"1 open + 4 sealed bags ✨ perfect",
+"1 open + 3 sealed bags",
+"1 open + 2 sealed bags",
+"1 open + 1 sealed bag",
+"1 open bag only"
+]
 },
+
 he:{
 title:"דיווח מצב מטבח",
-sub:"בחר מצב ושלח דיווח לוואטסאפ",
-milk:"כמה חלב יש?",
-ice:"כמה שקיות קרח יש?",
+sub:"בחר מצב ושלח דיווח",
+milkQ:"כמה חלב יש?",
+iceQ:"כמה שקיות קרח יש?",
 name:"שמך (לא חובה)",
-send:"שלח דיווח בוואטסאפ"
+send:"שלח דיווח בוואטסאפ",
+milk:[
+"2 בקבוקים מלאים ✨ מצב מושלם",
+"בקבוק מלא ובקבוק פתוח",
+"בקבוק פתוח בלבד"
+],
+ice:[
+"אחת פתוחה ו-4 סגורות ✨ מצב מושלם",
+"אחת פתוחה ו-3 סגורות",
+"אחת פתוחה ו-2 סגורות",
+"אחת פתוחה ואחת סגורה",
+"פתוחה בלבד"
+]
 },
+
 th:{
 title:"รายงานสถานะห้องครัว",
 sub:"เลือกสถานะแล้วส่งรายงาน",
-milk:"มีนมเท่าไหร่?",
-ice:"มีถุงน้ำแข็งกี่ถุง?",
+milkQ:"มีนมเท่าไหร่?",
+iceQ:"มีถุงน้ำแข็งกี่ถุง?",
 name:"ชื่อของคุณ (ไม่บังคับ)",
-send:"ส่งรายงานผ่าน WhatsApp"
+send:"ส่งรายงานผ่าน WhatsApp",
+milk:[
+"ขวดเต็ม 2 ขวด ✨ สมบูรณ์แบบ",
+"เต็ม 1 + เปิดแล้ว 1",
+"เปิดแล้ว 1 ขวด"
+],
+ice:[
+"เปิดแล้ว 1 + ปิดอยู่ 4 ✨",
+"เปิดแล้ว 1 + ปิดอยู่ 3",
+"เปิดแล้ว 1 + ปิดอยู่ 2",
+"เปิดแล้ว 1 + ปิดอยู่ 1",
+"เปิดแล้วเท่านั้น"
+]
 }
+
 }
 
 function setLang(l){
 
 lang=l
-const t=LANGS[l]
+const t=DATA[l]
 
 document.getElementById("title").textContent=t.title
 document.getElementById("subtitle").textContent=t.sub
-document.getElementById("milk-question").textContent=t.milk
-document.getElementById("ice-question").textContent=t.ice
+document.getElementById("milk-question").textContent=t.milkQ
+document.getElementById("ice-question").textContent=t.iceQ
 document.getElementById("name-label").textContent=t.name
 document.getElementById("send-label").textContent=t.send
 
-document.querySelectorAll(".lang-btn").forEach(btn=>{
-btn.classList.remove("active")
+document.querySelectorAll(".milk-opt").forEach((b,i)=>{
+b.textContent=t.milk[i]
 })
 
+document.querySelectorAll(".ice-opt").forEach((b,i)=>{
+b.textContent=t.ice[i]
+})
+
+document.querySelectorAll(".lang-btn").forEach(btn=>btn.classList.remove("active"))
 if(l==="en")document.querySelectorAll(".lang-btn")[0].classList.add("active")
 if(l==="he")document.querySelectorAll(".lang-btn")[1].classList.add("active")
 if(l==="th")document.querySelectorAll(".lang-btn")[2].classList.add("active")
 
 }
 
-function pick(item,i){
+function pick(e,item,i){
 
 sel[item]=i
 
-event.target.parentElement.querySelectorAll(".opt-btn").forEach(b=>{
-b.classList.remove("sel")
-})
-
-event.target.classList.add("sel")
+e.target.parentElement.querySelectorAll(".opt-btn").forEach(b=>b.classList.remove("sel"))
+e.target.classList.add("sel")
 
 document.getElementById("send-btn").disabled=false
 }
@@ -278,9 +204,8 @@ document.getElementById("send-btn").disabled=false
 function sendReport(){
 
 let lines=[]
-
-if(sel.milk!==null)lines.push("🥛 milk status option "+(sel.milk+1))
-if(sel.ice!==null)lines.push("🧊 ice status option "+(sel.ice+1))
+if(sel.milk!==null)lines.push("🥛 "+DATA[lang].milk[sel.milk])
+if(sel.ice!==null)lines.push("🧊 "+DATA[lang].ice[sel.ice])
 
 const reporter=document.getElementById("reporter-name").value
 
@@ -291,7 +216,6 @@ ${lines.join("\n")}
 Reporter: ${reporter}`
 
 window.open("https://wa.me/972544338837?text="+encodeURIComponent(msg))
-
 }
 
 const browserLang=navigator.language
