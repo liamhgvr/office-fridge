@@ -7,30 +7,97 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f3;min-height:100vh;padding:1rem}
-.app{max-width:480px;margin:0 auto;padding:1.5rem 1rem}
 
-.lang-bar{display:flex;gap:8px;margin-bottom:1.5rem;justify-content:center}
-.lang-btn{padding:6px 18px;border-radius:20px;border:1.5px solid #ccc;background:transparent;color:#666;cursor:pointer;font-size:14px;font-weight:500}
-.lang-btn.active{background:#111;color:#fff;border-color:#111}
+body{
+font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+background:#f5f5f3;
+min-height:100vh;
+padding:1rem
+}
 
-.header{text-align:center;margin-bottom:2rem}
-.header h1{font-size:22px;font-weight:500;color:#111;margin-bottom:4px}
-.header p{font-size:14px;color:#666}
+.app{
+max-width:480px;
+margin:0 auto;
+padding:1.5rem 1rem
+}
 
-.cards{display:flex;flex-direction:column;gap:16px;margin-bottom:2rem}
-.card{background:#fff;border:0.5px solid #ddd;border-radius:12px;padding:1.25rem}
+.lang-bar{
+display:flex;
+gap:8px;
+margin-bottom:1.5rem;
+justify-content:center
+}
 
-.card-top{display:flex;align-items:center;gap:14px;margin-bottom:1rem}
+.lang-btn{
+padding:6px 18px;
+border-radius:20px;
+border:1.5px solid #ccc;
+background:transparent;
+color:#666;
+cursor:pointer;
+font-size:14px
+}
 
-.icon{font-size:24px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:8px}
+.lang-btn.active{
+background:#111;
+color:#fff;
+border-color:#111
+}
+
+.header{
+text-align:center;
+margin-bottom:2rem
+}
+
+.header h1{
+font-size:22px;
+margin-bottom:4px
+}
+
+.header p{
+font-size:14px;
+color:#666
+}
+
+.cards{
+display:flex;
+flex-direction:column;
+gap:16px;
+margin-bottom:2rem
+}
+
+.card{
+background:#fff;
+border:0.5px solid #ddd;
+border-radius:12px;
+padding:1.25rem
+}
+
+.card-top{
+display:flex;
+align-items:center;
+gap:14px;
+margin-bottom:1rem
+}
+
+.icon{
+font-size:24px;
+width:44px;
+height:44px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:8px
+}
+
 .icon-milk{background:#E6F1FB}
 .icon-ice{background:#EAF3DE}
 
-.card-title{font-size:16px;font-weight:500;color:#111}
-.card-sub{font-size:12px;color:#999}
-
-.options{display:flex;flex-direction:column;gap:8px}
+.options{
+display:flex;
+flex-direction:column;
+gap:8px
+}
 
 .opt-btn{
 width:100%;
@@ -39,25 +106,15 @@ border-radius:8px;
 border:1.5px solid #ddd;
 background:transparent;
 cursor:pointer;
-font-size:14px;
-font-weight:500;
 display:flex;
 align-items:center;
 gap:10px
 }
 
-.opt-btn.sel-1{border-color:#1D9E75;background:#E1F5EE;color:#0F6E56}
-.opt-btn.sel-2{border-color:#63991f;background:#f0f7e0;color:#3B6D11}
-.opt-btn.sel-3{border-color:#BA7517;background:#FAEEDA;color:#854F0B}
-.opt-btn.sel-4{border-color:#c45c20;background:#fce8da;color:#8a3a12}
-.opt-btn.sel-5{border-color:#A32D2D;background:#FCEBEB;color:#A32D2D}
-
-.opt-dot{width:10px;height:10px;border-radius:50%}
-.d1{background:#1D9E75}
-.d2{background:#63991f}
-.d3{background:#BA7517}
-.d4{background:#c45c20}
-.d5{background:#E24B4A}
+.opt-btn.sel{
+border-color:#1D9E75;
+background:#E1F5EE
+}
 
 .send-btn{
 width:100%;
@@ -70,33 +127,24 @@ font-size:16px;
 cursor:pointer
 }
 
-.send-btn:disabled{opacity:0.4}
+.send-btn:disabled{
+opacity:0.4
+}
 
 .reporter-row input{
 width:100%;
 padding:9px 12px;
 border-radius:8px;
 border:0.5px solid #ddd;
-background:#f9f9f9;
-font-size:14px
+background:#f9f9f9
 }
 
-.note{font-size:12px;color:#aaa;text-align:center;margin-top:1rem}
-
-.toast{
-position:fixed;
-bottom:24px;
-left:50%;
-transform:translateX(-50%);
-background:#111;
-color:#fff;
-padding:12px 24px;
-border-radius:24px;
-opacity:0;
-transition:opacity .3s
+.note{
+font-size:12px;
+color:#aaa;
+text-align:center;
+margin-top:1rem
 }
-
-.toast.show{opacity:1}
 </style>
 </head>
 
@@ -106,13 +154,13 @@ transition:opacity .3s
 
 <div class="lang-bar">
 <button class="lang-btn" onclick="setLang('en')">EN</button>
-<button class="lang-btn active" onclick="setLang('he')">עברית</button>
+<button class="lang-btn" onclick="setLang('he')">עברית</button>
 <button class="lang-btn" onclick="setLang('th')">ไทย</button>
 </div>
 
 <div class="header">
-<h1 id="h-title">דיווח מצב מטבח</h1>
-<p id="h-sub">בחר מצב ושלח דיווח לוואטסאפ</p>
+<h1 id="title"></h1>
+<p id="subtitle"></p>
 </div>
 
 <div class="cards">
@@ -120,104 +168,137 @@ transition:opacity .3s
 <div class="card">
 <div class="card-top">
 <div class="icon icon-milk">🥛</div>
-<div>
-<div class="card-title">כמה חלב יש?</div>
-<div class="card-sub">How much milk is there?</div>
-</div>
+<div id="milk-question"></div>
 </div>
 
-<div class="options" id="milk-opts">
-<button class="opt-btn" onclick="pick('milk',0)"><div class="opt-dot d1"></div>2 בקבוקים מלאים</button>
-<button class="opt-btn" onclick="pick('milk',1)"><div class="opt-dot d2"></div>בקבוק מלא ובקבוק פתוח</button>
-<button class="opt-btn" onclick="pick('milk',2)"><div class="opt-dot d5"></div>בקבוק פתוח בלבד</button>
+<div class="options">
+<button class="opt-btn" onclick="pick('milk',0)">2 full bottles</button>
+<button class="opt-btn" onclick="pick('milk',1)">1 full + 1 open bottle</button>
+<button class="opt-btn" onclick="pick('milk',2)">1 open bottle only</button>
 </div>
 </div>
 
 <div class="card">
 <div class="card-top">
 <div class="icon icon-ice">🧊</div>
-<div>
-<div class="card-title">כמה שקיות קרח יש?</div>
-<div class="card-sub">How many ice bags?</div>
-</div>
+<div id="ice-question"></div>
 </div>
 
-<div class="options" id="ice-opts">
-<button class="opt-btn" onclick="pick('ice',0)"><div class="opt-dot d1"></div>1 פתוחה + 4 סגורות</button>
-<button class="opt-btn" onclick="pick('ice',1)"><div class="opt-dot d2"></div>1 פתוחה + 3 סגורות</button>
-<button class="opt-btn" onclick="pick('ice',2)"><div class="opt-dot d3"></div>1 פתוחה + 2 סגורות</button>
-<button class="opt-btn" onclick="pick('ice',3)"><div class="opt-dot d4"></div>1 פתוחה + 1 סגורה</button>
-<button class="opt-btn" onclick="pick('ice',4)"><div class="opt-dot d5"></div>פתוחה בלבד</button>
+<div class="options">
+<button class="opt-btn" onclick="pick('ice',0)">1 open + 4 sealed bags</button>
+<button class="opt-btn" onclick="pick('ice',1)">1 open + 3 sealed bags</button>
+<button class="opt-btn" onclick="pick('ice',2)">1 open + 2 sealed bags</button>
+<button class="opt-btn" onclick="pick('ice',3)">1 open + 1 sealed bag</button>
+<button class="opt-btn" onclick="pick('ice',4)">1 open bag only</button>
 </div>
 </div>
 
 <div class="card reporter-row">
-<div style="font-size:12px;margin-bottom:6px">שמך (לא חובה)</div>
+<div id="name-label"></div>
 <input type="text" id="reporter-name">
 </div>
 
 </div>
 
 <button class="send-btn" id="send-btn" onclick="sendReport()" disabled>
-<span id="send-label">בחר מצב לפני שליחה</span>
+<span id="send-label"></span>
 </button>
 
 <p class="note">Report sent via WhatsApp</p>
 
 </div>
 
-<div class="toast" id="toast"></div>
-
 <script>
 
 let sel={milk:null,ice:null}
+let lang="en"
 
-function pick(item,idx){
-sel[item]=idx
-document.querySelectorAll('#'+item+'-opts .opt-btn').forEach((b,i)=>{
-b.className='opt-btn'+(i===idx?' sel-'+(idx+1):'')
-})
-updateBtn()
+const LANGS={
+en:{
+title:"Office Supply Tracker",
+sub:"Select status and send a report",
+milk:"How much milk is there?",
+ice:"How many ice bags are there?",
+name:"Your name (optional)",
+send:"Send WhatsApp Report"
+},
+he:{
+title:"דיווח מצב מטבח",
+sub:"בחר מצב ושלח דיווח לוואטסאפ",
+milk:"כמה חלב יש?",
+ice:"כמה שקיות קרח יש?",
+name:"שמך (לא חובה)",
+send:"שלח דיווח בוואטסאפ"
+},
+th:{
+title:"รายงานสถานะห้องครัว",
+sub:"เลือกสถานะแล้วส่งรายงาน",
+milk:"มีนมเท่าไหร่?",
+ice:"มีถุงน้ำแข็งกี่ถุง?",
+name:"ชื่อของคุณ (ไม่บังคับ)",
+send:"ส่งรายงานผ่าน WhatsApp"
+}
 }
 
-function updateBtn(){
-const ready=sel.milk!==null||sel.ice!==null
-document.getElementById('send-btn').disabled=!ready
+function setLang(l){
+
+lang=l
+const t=LANGS[l]
+
+document.getElementById("title").textContent=t.title
+document.getElementById("subtitle").textContent=t.sub
+document.getElementById("milk-question").textContent=t.milk
+document.getElementById("ice-question").textContent=t.ice
+document.getElementById("name-label").textContent=t.name
+document.getElementById("send-label").textContent=t.send
+
+document.querySelectorAll(".lang-btn").forEach(btn=>{
+btn.classList.remove("active")
+})
+
+if(l==="en")document.querySelectorAll(".lang-btn")[0].classList.add("active")
+if(l==="he")document.querySelectorAll(".lang-btn")[1].classList.add("active")
+if(l==="th")document.querySelectorAll(".lang-btn")[2].classList.add("active")
+
+}
+
+function pick(item,i){
+
+sel[item]=i
+
+event.target.parentElement.querySelectorAll(".opt-btn").forEach(b=>{
+b.classList.remove("sel")
+})
+
+event.target.classList.add("sel")
+
+document.getElementById("send-btn").disabled=false
 }
 
 function sendReport(){
 
-const reporter=document.getElementById('reporter-name').value.trim()
-
 let lines=[]
 
-if(sel.milk!==null){
-lines.push('🥛 Milk status option '+(sel.milk+1))
-}
+if(sel.milk!==null)lines.push("🥛 milk status option "+(sel.milk+1))
+if(sel.ice!==null)lines.push("🧊 ice status option "+(sel.ice+1))
 
-if(sel.ice!==null){
-lines.push('🧊 Ice status option '+(sel.ice+1))
-}
+const reporter=document.getElementById("reporter-name").value
 
-const msg=`יותם יא מלך 👑
+const msg=`Kitchen status:
 
-הגעתי למשרד והמצב במטבח:
+${lines.join("\n")}
 
-${lines.join('\n')}
+Reporter: ${reporter}`
 
-תוכל לקנות עוד למשרד?
-
-תודה 🙏
-${reporter}`
-
-window.open('https://wa.me/972544338837?text='+encodeURIComponent(msg),'_blank')
-
-const toast=document.getElementById('toast')
-toast.innerText='Report sent!'
-toast.classList.add('show')
-setTimeout(()=>toast.classList.remove('show'),2500)
+window.open("https://wa.me/972544338837?text="+encodeURIComponent(msg))
 
 }
+
+const browserLang=navigator.language
+
+if(browserLang.startsWith("he"))setLang("he")
+else if(browserLang.startsWith("th"))setLang("th")
+else setLang("en")
 
 </script>
 
