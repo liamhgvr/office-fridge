@@ -249,24 +249,28 @@ function sendReport(){
 
 let lines=[]
 
-if(sel.milk!==null)lines.push("🥛 "+DATA[lang].milk[sel.milk])
-if(sel.ice!==null)lines.push("🧊 "+DATA[lang].ice[sel.ice])
+if(sel.milk!==null) lines.push("🥛 " + DATA[lang].milk[sel.milk])
+if(sel.ice!==null) lines.push("🧊 " + DATA[lang].ice[sel.ice])
 
 const reporter=document.getElementById("reporter-name").value
 
-const msg=`Kitchen status:
+let msgLines = [
+"Kitchen status:",
+"",
+"יותם יא מלך, מה שלומך? 👑",
+"",
+"הגעתי למשרד והמצב במטבח הוא כזה:",
+...lines,
+"",
+"תוכל בבקשה לקנות עוד למשרד?",
+"תודה רבה ויום טוב 🙏",
+"",
+"Reporter: " + reporter
+]
 
-יותם יא מלך, מה שלומך? 👑
+const msg = msgLines.join("\n")
 
-הגעתי למשרד והמצב במטבח הוא כזה:
-${lines.join("\n")}
-
-תוכל בבקשה לקנות עוד למשרד?
-תודה רבה ויום טוב 🙏
-
-Reporter: ${reporter}`
-
-window.open("https://wa.me/972543021891?text="+encodeURIComponent(msg))
+location.href="https://wa.me/972543021891?text="+encodeURIComponent(msg)
 }
 
 const browserLang=navigator.language
