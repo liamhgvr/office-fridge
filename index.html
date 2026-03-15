@@ -248,25 +248,24 @@ document.getElementById("send-btn").disabled=false
 function sendReport(){
 
 let lines=[]
+
 if(sel.milk!==null)lines.push("🥛 "+DATA[lang].milk[sel.milk])
 if(sel.ice!==null)lines.push("🧊 "+DATA[lang].ice[sel.ice])
 
 const reporter=document.getElementById("reporter-name").value
 
 const msg=`Kitchen status:
+
 יותם יא מלך, מה שלומך? 👑
 
 הגעתי למשרד והמצב במטבח הוא כזה:
-${detailLines.join('\n')}
+${lines.join("\n")}
 
 תוכל בבקשה לקנות עוד למשרד?
 תודה רבה ויום טוב 🙏
 
-${lines.join("\n")}
-
 Reporter: ${reporter}`
 
-//window.open("https://wa.me/972544338837?text="+encodeURIComponent(msg))
 window.open("https://wa.me/972543021891?text="+encodeURIComponent(msg))
 }
 
