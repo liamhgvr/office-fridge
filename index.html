@@ -6,37 +6,69 @@
 <title>Office Supply Tracker</title>
 
 <style>
+
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f3;padding:1rem}
-.app{max-width:480px;margin:auto}
 
-.lang-bar{display:flex;gap:8px;justify-content:center;margin-bottom:20px}
-.lang-btn{padding:6px 16px;border-radius:20px;border:1px solid #ccc;background:#fff;cursor:pointer}
-.lang-btn.active{background:#111;color:#fff}
-
-.card{background:#fff;border-radius:10px;padding:16px;margin-bottom:16px;border:1px solid #ddd}
-
-.options{display:flex;flex-direction:column;gap:8px;margin-top:10px}
-
-#title{
-min-height:32px;
+body{
+font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+background:#111;
+color:#fff;
+padding:1rem;
+text-align:center;
 }
 
-#subtitle{
-min-height:22px;
+.app{
+max-width:480px;
+margin:auto
+}
+
+.lang-bar{
+display:flex;
+gap:8px;
+justify-content:center;
+margin-bottom:20px
 }
 
 .lang-btn{
 width:80px;
-text-align:center;
+padding:6px 16px;
+border-radius:20px;
+border:1px solid #444;
+background:#1b1b1b;
+color:#fff;
+cursor:pointer
 }
 
-.opt-btn{
-padding:10px;
-border-radius:8px;
-border:1px solid #ddd;
-cursor:pointer;
-background:#fff
+.lang-btn.active{
+background:#2d7df6;
+border-color:#2d7df6
+}
+
+.card{
+background:#1b1b1b;
+border-radius:10px;
+padding:16px;
+margin-bottom:16px;
+border:1px solid #333
+}
+
+.options{
+display:flex;
+flex-direction:column;
+gap:8px;
+margin-top:10px;
+align-items:center
+}
+
+#title{min-height:32px}
+#subtitle{min-height:22px}
+
+#milk-question,
+#ice-question{
+min-height:28px;
+display:flex;
+align-items:center;
+justify-content:center
 }
 
 .opt-btn{
@@ -47,64 +79,43 @@ min-height:48px;
 display:flex;
 align-items:center;
 justify-content:center;
+padding:10px;
+border-radius:8px;
+border:1px solid #444;
+cursor:pointer;
+background:#1b1b1b;
+color:#fff
 }
 
-.opt-btn.sel{background:#E1F5EE;border-color:#1D9E75}
+.opt-btn.sel{
+background:#1D9E75;
+border-color:#1D9E75
+}
+
+input{
+width:90%;
+padding:10px;
+border-radius:8px;
+border:1px solid #444;
+background:#1b1b1b;
+color:#fff
+}
 
 .send-btn{
 width:100%;
 padding:14px;
-background:#111;
+background:#2d7df6;
 color:#fff;
 border:none;
 border-radius:10px;
-cursor:pointer
+cursor:pointer;
+font-size:16px
 }
 
-body{
-text-align:center;
+.send-btn:disabled{
+opacity:0.4
 }
 
-body{
-background:#111;
-color:#ffffff;
-}
-
-.opt-btn{
-color:#ffffff;
-background:#1b1b1b;
-border:1px solid #444;
-}
-
-.card{
-background:#1b1b1b;
-color:#ffffff;
-}
-
-input{
-background:#1b1b1b;
-color:#ffffff;
-border:1px solid #444;
-}
-
-.options{
-align-items:center;
-}
-
-.opt-btn{
-text-align:center;
-justify-content:center;
-}
-
-#milk-question,
-#ice-question{
-min-height:28px;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.send-btn:disabled{opacity:0.4}
 </style>
 </head>
 
@@ -149,6 +160,7 @@ justify-content:center;
 
 <div class="card">
 <div id="name-label"></div>
+<br>
 <input type="text" id="reporter-name">
 </div>
 
@@ -189,42 +201,42 @@ ice:[
 he:{
 title:"דיווח מצב מטבח",
 sub:"בחר מצב ושלח דיווח",
-milkQ:"כמה חלב יש?",
-iceQ:"כמה שקיות קרח יש?",
-name:"שמך (לא חובה)",
+milkQ:"🥛 כמה חלב יש?",
+iceQ:"🧊 כמה שקיות קרח יש?",
+name:"👤 שמך (לא חובה)",
 send:"שלח דיווח בוואטסאפ",
 milk:[
-"2 בקבוקים מלאים ✨ מצב מושלם",
-"בקבוק מלא ובקבוק פתוח",
-"בקבוק פתוח בלבד"
+"🥛🥛 2 בקבוקים מלאים ✨ מצב מושלם",
+"🥛 בקבוק מלא ובקבוק פתוח",
+"🥛 בקבוק פתוח בלבד"
 ],
 ice:[
-"אחת פתוחה ו-4 סגורות ✨ מצב מושלם",
-"אחת פתוחה ו-3 סגורות",
-"אחת פתוחה ו-2 סגורות",
-"אחת פתוחה ואחת סגורה",
-"פתוחה בלבד"
+"🧊🧊🧊🧊 אחת פתוחה ו-4 סגורות ✨",
+"🧊🧊🧊 אחת פתוחה ו-3 סגורות",
+"🧊🧊 אחת פתוחה ו-2 סגורות",
+"🧊 אחת פתוחה ואחת סגורה",
+"🧊 פתוחה בלבד"
 ]
 },
 
 th:{
 title:"รายงานสถานะห้องครัว",
 sub:"เลือกสถานะแล้วส่งรายงาน",
-milkQ:"มีนมเท่าไหร่?",
-iceQ:"มีถุงน้ำแข็งกี่ถุง?",
-name:"ชื่อของคุณ (ไม่บังคับ)",
+milkQ:"🥛 มีนมเท่าไหร่?",
+iceQ:"🧊 มีถุงน้ำแข็งกี่ถุง?",
+name:"👤 ชื่อของคุณ (ไม่บังคับ)",
 send:"ส่งรายงานผ่าน WhatsApp",
 milk:[
-"ขวดเต็ม 2 ขวด ✨ สมบูรณ์แบบ",
-"เต็ม 1 + เปิดแล้ว 1",
-"เปิดแล้ว 1 ขวด"
+"🥛🥛 ขวดเต็ม 2 ขวด ✨",
+"🥛 เต็ม 1 + เปิดแล้ว 1",
+"🥛 เปิดแล้ว 1 ขวด"
 ],
 ice:[
-"เปิดแล้ว 1 + ปิดอยู่ 4 ✨",
-"เปิดแล้ว 1 + ปิดอยู่ 3",
-"เปิดแล้ว 1 + ปิดอยู่ 2",
-"เปิดแล้ว 1 + ปิดอยู่ 1",
-"เปิดแล้วเท่านั้น"
+"🧊🧊🧊🧊 เปิดแล้ว 1 + ปิดอยู่ 4 ✨",
+"🧊🧊🧊 เปิดแล้ว 1 + ปิดอยู่ 3",
+"🧊🧊 เปิดแล้ว 1 + ปิดอยู่ 2",
+"🧊 เปิดแล้ว 1 + ปิดอยู่ 1",
+"🧊 เปิดแล้วเท่านั้น"
 ]
 }
 
@@ -251,6 +263,7 @@ b.textContent=t.ice[i]
 })
 
 document.querySelectorAll(".lang-btn").forEach(btn=>btn.classList.remove("active"))
+
 if(l==="en")document.querySelectorAll(".lang-btn")[0].classList.add("active")
 if(l==="he")document.querySelectorAll(".lang-btn")[1].classList.add("active")
 if(l==="th")document.querySelectorAll(".lang-btn")[2].classList.add("active")
@@ -271,12 +284,12 @@ function sendReport(){
 
 let lines=[]
 
-if(sel.milk!==null) lines.push("🥛 " + DATA[lang].milk[sel.milk])
-if(sel.ice!==null) lines.push("🧊 " + DATA[lang].ice[sel.ice])
+if(sel.milk!==null) lines.push("🥛 "+DATA[lang].milk[sel.milk])
+if(sel.ice!==null) lines.push("🧊 "+DATA[lang].ice[sel.ice])
 
 const reporter=document.getElementById("reporter-name").value
 
-let msgLines = [
+let msgLines=[
 "Kitchen status:",
 "",
 "יותם יא מלך, מה שלומך? 👑",
@@ -287,19 +300,19 @@ let msgLines = [
 "תוכל בבקשה לקנות עוד למשרד?",
 "תודה רבה ויום טוב 🙏",
 "",
-"Reporter: " + reporter
+"Reporter: "+reporter
 ]
 
-const msg = msgLines.join("\n")
+const msg=msgLines.join("\n")
 
-#location.href="https://wa.me/972543021891?text="+encodeURIComponent(msg)
 location.href="https://wa.me/972544338837?text="+encodeURIComponent(msg)
+
 }
 
 const browserLang=navigator.language
 
-if(browserLang.startsWith("he"))setLang("he")
-else if(browserLang.startsWith("th"))setLang("th")
+if(browserLang.startsWith("he")) setLang("he")
+else if(browserLang.startsWith("th")) setLang("th")
 else setLang("en")
 
 </script>
